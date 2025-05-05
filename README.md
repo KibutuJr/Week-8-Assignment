@@ -1,4 +1,4 @@
-##**Contact API (FastAPI + MySQL)**
+### Contact API (FastAPI + MySQL)
 
 A simple yet robust CRUD (Create, Read, Update, Delete) API for managing contacts, built with FastAPI, SQLAlchemy, and MySQL. This project demonstrates how to integrate Python-based RESTful APIs with a MySQL database, following best practices for structure, configuration, and deployment.
 
