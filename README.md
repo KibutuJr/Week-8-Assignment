@@ -99,7 +99,7 @@ The API supports:
 ### 1. Clone the Repository
 
 cd ~/Desktop/Week8
-git clone https://github.com/KibutuJr/contact_api.git
+[git clone https://github.com/KibutuJr/contact_api.git](https://github.com/KibutuJr/Week-8-Assignment.git)
 cd contact_api
 
 2. Configure Environment Variables
