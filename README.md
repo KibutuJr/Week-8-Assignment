@@ -26,6 +26,14 @@ This project demonstrates integrating Python RESTful APIs with MySQL following b
 
 - **Schema file for this API:** `contacts.sql` (located in the project root)
 
+### 🗺️ Database ERD Diagram
+
+Below is the Entity-Relationship Diagram (ERD) representing the structure of the `contact_db` database:
+
+<p align="center">
+  <img src="contact%20ERD.png" alt="Contact DB ERD" width="600"/>
+</p>
+
 ---
 
 ## 🚩 Table of Contents
@@ -93,6 +101,7 @@ The API supports:
 cd ~/Desktop/Week8
 git clone https://github.com/KibutuJr/contact_api.git
 cd contact_api
+
 2. Configure Environment Variables
 Create a .env file:
 
@@ -100,7 +109,7 @@ DATABASE_URL=mysql+mysqlconnector://<DB_USER>:<DB_PASSWORD>@localhost/contact_db
 Replace <DB_USER> and <DB_PASSWORD> with your MySQL credentials.
 
 3. Initialize Virtual Environment
-4. 
+
 python -m venv venv
 source venv/Scripts/activate  # Windows (Git Bash)
 # or
@@ -109,20 +118,20 @@ source venv/bin/activate      # macOS/Linux
 
 pip install -r requirements.txt
 5. Setup MySQL Database
-Open MySQL Workbench or CLI and run:
 
-sql
+Open MySQL Workbench or CLI and run:
 
 CREATE DATABASE contact_db;
 USE contact_db;
 SOURCE contacts.sql;
 
 6. Run Database Migrations
+
 Tables are auto-created on startup using SQLAlchemy's Base.metadata.create_all.
 Just ensure your .env and database setup are correct.
 
 7. Start the API Server
-8. 
+
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ➡️ Visit http://localhost:8000/docs for Swagger docs.
 
@@ -136,6 +145,7 @@ contact_api/
 ├── crud.py             # CRUD utility functions
 ├── requirements.txt    # Python dependencies
 ├── contacts.sql        # SQL file for Question 2
+├── contact ERD.png     # ERD diagram image
 ├── Week8-Q1/
 │   └── library_management.sql  # SQL file for Question 1
 ├── .env                # Environment variables
