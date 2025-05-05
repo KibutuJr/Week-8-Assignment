@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# Uvicorn reload files
+*.reload/
+
+# IDE/editor settings
+.vscode/
