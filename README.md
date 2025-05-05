@@ -1,176 +1,161 @@
-### Contact API (FastAPI + MySQL)
+# Week 8: SQL & API Projects
 
-A simple yet robust CRUD (Create, Read, Update, Delete) API for managing contacts, built with FastAPI, SQLAlchemy, and MySQL. This project demonstrates how to integrate Python-based RESTful APIs with a MySQL database, following best practices for structure, configuration, and deployment.
+This repository contains solutions for Week 8 assignments:
 
----
-
-## Table of Contents
-
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Tech Stack](#tech-stack)
-4. [Prerequisites](#prerequisites)
-5. [Installation & Setup](#installation--setup)
-
-   1. [Clone the Repository](#clone-the-repository)
-   2. [Configure Environment Variables](#configure-environment-variables)
-   3. [Initialize Virtual Environment](#initialize-virtual-environment)
-   4. [Install Dependencies](#install-dependencies)
-   5. [Setup MySQL Database](#setup-mysql-database)
-   6. [Run Database Migrations](#run-database-migrations)
-   7. [Start the API Server](#start-the-api-server)
-6. [Directory Structure](#directory-structure)
-7. [Configuration](#configuration)
-8. [API Endpoints](#api-endpoints)
-9. [Testing](#testing)
-10. [Error Handling](#error-handling)
-11. [Contributing](#contributing)
-12. [License](#license)
+- **Question 1 (Week8-Q1):** Library Management SQL schema.
+- **Question 2:** Contact Management API built with FastAPI, SQLAlchemy, and MySQL.
 
 ---
 
-## Project Overview
+## 📚 Question 1: Library Management SQL
 
-This Contact API allows you to manage a simple contact book with users, groups, and individual contacts. The API supports the following core operations:
+The `Week8-Q1` folder contains the SQL file for setting up a Library Management System.
 
-* **Create** a new contact
-* **Read** all contacts or a single contact by ID
-* **Update** an existing contact
-* **Delete** a contact
+- **File:** `Week8-Q1/library_management.sql`
 
-The application leverages FastAPI for fast performance, SQLAlchemy ORM for database abstraction, and MySQL as the persistent data store.
+This script creates tables for managing books, members, borrowing records, and more.
 
----
-
-## Features
-
-* **RESTful API** adhering to HTTP standards
-* **Automatic API documentation** via Swagger UI and ReDoc
-* **Configurable** via environment variables
-* **Clean code structure** separating models, schemas, CRUD logic, and application entrypoint
-* **Error handling** with meaningful HTTP status codes
+➡️ Run this file in MySQL Workbench or MySQL CLI to initialize the library database.
 
 ---
 
-## Tech Stack
+## 📇 Question 2: Contact API (FastAPI + MySQL)
 
-* **Python 3.x**
-* **FastAPI** for web framework
-* **Uvicorn** as ASGI server
-* **SQLAlchemy** for ORM
-* **MySQL** for database
-* **Pydantic** for data validation and serialization
+A robust CRUD API for managing contacts, built using FastAPI, SQLAlchemy, and MySQL.
+This project demonstrates integrating Python RESTful APIs with MySQL following best practices.
+
+- **Schema file for this API:** `contacts.sql` (located in the project root)
 
 ---
 
-## Prerequisites
+## 🚩 Table of Contents
 
-* Python 3.7 or higher installed
-* MySQL server installed and running
-* Git or Git Bash for version control
+- [Project Overview](#-project-overview)
+- [Features](#-features)
+- [Tech Stack](#️-tech-stack)
+- [Prerequisites](#️-prerequisites)
+- [Installation & Setup](#-installation--setup)
+- [Directory Structure](#-directory-structure)
+- [Configuration](#️-configuration)
+- [API Endpoints](#-api-endpoints)
+- [Testing](#-testing)
+- [Error Handling](#-error-handling)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
-## Installation & Setup
+## 🔎 Project Overview
 
-### Clone the Repository
+This Contact API allows you to manage a contact book with users, groups, and individual contacts.
 
-```bash
+The API supports:
+- Create a new contact
+- Read all contacts or a single contact by ID
+- Update existing contacts
+- Delete contacts
+
+---
+
+## 🌟 Features
+
+- RESTful API following HTTP standards
+- Swagger UI and ReDoc API docs
+- Environment-based configuration
+- Clean code structure with separation of concerns
+- Error handling with meaningful HTTP codes
+
+---
+
+## 🛠️ Tech Stack
+
+- Python 3.x
+- FastAPI (web framework)
+- Uvicorn (ASGI server)
+- SQLAlchemy (ORM)
+- MySQL (database)
+- Pydantic (data validation)
+
+---
+
+## ✅ Prerequisites
+
+- Python 3.7 or higher
+- MySQL server installed and running
+- Git or Git Bash
+
+---
+
+## 🚀 Installation & Setup
+
+### 1. Clone the Repository
+
 cd ~/Desktop/Week8
-git clone https://github.com/YourUsername/contact_api.git
+git clone https://github.com/KibutuJr/contact_api.git
 cd contact_api
-```
+2. Configure Environment Variables
+Create a .env file:
 
-### Configure Environment Variables
-
-Create a `.env` file in the project root with the following content:
-
-```ini
 DATABASE_URL=mysql+mysqlconnector://<DB_USER>:<DB_PASSWORD>@localhost/contact_db
-```
+Replace <DB_USER> and <DB_PASSWORD> with your MySQL credentials.
 
-Replace `<DB_USER>` and `<DB_PASSWORD>` with your MySQL credentials.
-
-### Initialize Virtual Environment
-
-```bash
+3. Initialize Virtual Environment
+4. 
 python -m venv venv
-source venv/Scripts/activate        # Windows (Git Bash)
+source venv/Scripts/activate  # Windows (Git Bash)
 # or
-source venv/bin/activate            # macOS/Linux
-```
+source venv/bin/activate      # macOS/Linux
+4. Install Dependencies
 
-### Install Dependencies
-
-```bash
 pip install -r requirements.txt
-```
+5. Setup MySQL Database
+Open MySQL Workbench or CLI and run:
 
-### Setup MySQL Database
+sql
 
-1. Open MySQL Workbench (or CLI).
-2. Create a new database:
+CREATE DATABASE contact_db;
+USE contact_db;
+SOURCE contacts.sql;
 
-   ```sql
-   CREATE DATABASE contact_db;
-   USE contact_db;
-   ```
-3. Run the schema script located in `database/schema.sql` (or manually create tables using the provided SQL in README).
+6. Run Database Migrations
+Tables are auto-created on startup using SQLAlchemy's Base.metadata.create_all.
+Just ensure your .env and database setup are correct.
 
-### Run Database Migrations
-
-This project uses SQLAlchemy's `Base.metadata.create_all` to auto-create tables on startup. Ensure your database is running and credentials in `.env` are correct.
-
-### Start the API Server
-
-```bash
+7. Start the API Server
+8. 
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
+➡️ Visit http://localhost:8000/docs for Swagger docs.
 
-Visit `http://localhost:8000/docs` for interactive API docs.
+📂 Directory Structure
 
----
-
-## Directory Structure
-
-```
 contact_api/
-├── main.py            # FastAPI entrypoint and routes
-├── database.py        # SQLAlchemy engine and session
-├── models.py          # ORM models (User, Group, Contact)
-├── schemas.py         # Pydantic schemas for request/response
-├── crud.py            # CRUD utility functions
-├── requirements.txt   # Python dependencies
-├── .env               # Environment variables (not committed)
-├── .gitignore         # Git ignore rules
-└── README.md          # This documentation
-```
+├── main.py             # FastAPI entrypoint & routes
+├── database.py         # SQLAlchemy engine & session
+├── models.py           # ORM models (User, Group, Contact)
+├── schemas.py          # Pydantic schemas
+├── crud.py             # CRUD utility functions
+├── requirements.txt    # Python dependencies
+├── contacts.sql        # SQL file for Question 2
+├── Week8-Q1/
+│   └── library_management.sql  # SQL file for Question 1
+├── .env                # Environment variables
+├── .gitignore          # Git ignore rules
+└── README.md           # Documentation
+⚙️ Configuration
+Manage settings through .env:
 
----
+DATABASE_URL — MySQL connection string
 
-## Configuration
+📡 API Endpoints
+Method	Path	Description
+POST	/contacts/	Create a new contact
+GET	/contacts/	Get list of contacts
+GET	/contacts/{id}	Get a contact by ID
+PUT	/contacts/{id}	Update an existing contact
+DELETE	/contacts/{id}	Delete a contact by ID
 
-All critical settings are managed through environment variables:
+Example: Create Contact
 
-* `DATABASE_URL` – Connection string for MySQL (SQLAlchemy format)
-
-Feel free to extend with additional variables as needed (e.g., `DEBUG`, `LOG_LEVEL`).
-
----
-
-## API Endpoints
-
-| Method | Path             | Description                |
-| ------ | ---------------- | -------------------------- |
-| POST   | `/contacts/`     | Create a new contact       |
-| GET    | `/contacts/`     | Retrieve list of contacts  |
-| GET    | `/contacts/{id}` | Retrieve a contact by ID   |
-| PUT    | `/contacts/{id}` | Update an existing contact |
-| DELETE | `/contacts/{id}` | Delete a contact by ID     |
-
-Example cURL for creating a contact:
-
-```bash
 curl -X POST "http://localhost:8000/contacts/" \
   -H "Content-Type: application/json" \
   -d '{
@@ -180,40 +165,32 @@ curl -X POST "http://localhost:8000/contacts/" \
         "user_id": 1,
         "group_id": 2
       }'
-```
+🧪 Testing
+Test API via:
 
----
+Swagger UI: http://localhost:8000/docs
 
-## Testing
+ReDoc: http://localhost:8000/redoc
 
-You can test endpoints via:
+cURL or Postman
 
-* **Swagger UI**: `http://localhost:8000/docs`
-* **ReDoc**: `http://localhost:8000/redoc`
-* **cURL** or **Postman** for custom requests
+🚩 Error Handling
+404 Not Found for missing resources
 
----
+422 Unprocessable Entity for invalid payloads
 
-## Error Handling
+Custom exception handlers in main.py
 
-* Returns `404 Not Found` for missing resources
-* Returns `422 Unprocessable Entity` for invalid request payloads
-* Customize exception handlers in `main.py` as needed
+🤝 Contributing
+Fork this repository
 
----
+Create a new branch: git checkout -b feature/YourFeature
 
-## Contributing
+Commit your changes: git commit -m "Add some feature"
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/YourFeature`
-3. Commit your changes: `git commit -m "Add some feature"`
-4. Push to the branch: `git push origin feature/YourFeature`
-5. Open a Pull Request on GitHub
+Push: git push origin feature/YourFeature
 
-Please adhere to the existing code style and include tests where appropriate.
+Open a Pull Request on GitHub
 
----
-
-## License
-
-This project is licensed under the **MIT License**. See `LICENSE` for details.
+📄 License
+Licensed under the MIT License. See LICENSE for details.
